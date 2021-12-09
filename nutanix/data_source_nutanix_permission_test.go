@@ -23,9 +23,9 @@ func TestAccNutanixPermissionDataSource_basic(t *testing.T) {
 					resource.TestCheckResourceAttr(
 						"data.nutanix_permission.test", "name", PERMISSIONNAME),
 					resource.TestCheckResourceAttr(
-						"data.nutanix_permission.test", "operation", "console_access"),
+						"data.nutanix_permission.test", "operation", "delete"),
 					resource.TestCheckResourceAttr(
-						"data.nutanix_permission.test", "fields.0.field_mode", "DISALLOWED"),
+						"data.nutanix_permission.test", "fields.0.field_mode", "NONE"),
 				),
 			},
 		},
@@ -51,9 +51,9 @@ func TestAccNutanixPermissionDataSource_basicByName(t *testing.T) {
 					resource.TestCheckResourceAttr(
 						"data.nutanix_permission.test", "name", PERMISSIONNAME),
 					resource.TestCheckResourceAttr(
-						"data.nutanix_permission.test", "operation", "console_access"),
+						"data.nutanix_permission.test", "operation", "delete"),
 					resource.TestCheckResourceAttr(
-						"data.nutanix_permission.test", "fields.0.field_mode", "DISALLOWED"),
+						"data.nutanix_permission.test", "fields.0.field_mode", "NONE"),
 				),
 			},
 		},
