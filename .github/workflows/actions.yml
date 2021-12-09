@@ -21,5 +21,20 @@ jobs:
         with:
           go-version: 1.17
       - name: Acceptance test cases
-        run: CGO_ENABLED=0 NUTANIX_USERNAME="admin" NUTANIX_PASSWORD="Nutanix.123" NUTANIX_INSECURE=true NUTANIX_PORT=9440 NUTANIX_ENDPOINT="10.51.144.11" NUTANIX_PE_PASSWORD="Nutanix.123" NUTANIX_PE_USERNAME="admin" NUTANIX_STORAGE_CONTAINER="f42ba7af-fe12-4555-80b2-70df794b4707" make testacc
+        run: TESTARGS="-run=TestAccNutanixVirtualMachine_hotadd" CGO_ENABLED=0 NUTANIX_USERNAME="admin" NUTANIX_PASSWORD="Nutanix.123" NUTANIX_INSECURE=true NUTANIX_PORT=9440 NUTANIX_ENDPOINT="10.51.144.11" NUTANIX_PE_PASSWORD="Nutanix.123" NUTANIX_PE_USERNAME="admin" NUTANIX_STORAGE_CONTAINER="f42ba7af-fe12-4555-80b2-70df794b4707" make testacc
+      - name: Code Coverage Check
+        env:
+              TESTCOV_THRESHOLD = 0
+        run:  |
+              echo "Code coverage: Checking if code coverage is above threshold..."
+              echo "Threshold: $TESTCOV_THRESHOLD %"
+              totalCoverage=`go tool cover -func=coverage.out | grep total | grep -Eo '[0-9]+\.[0-9]+'`
+              echo "Current test coverage : $totalCoverage %"
+              if (( $(echo "$totalCoverage $TESTCOVERAGE_THRESHOLD" | awk '{print ($1 > $2)}') )); then
+                  echo "Coverage passed"
+              else
+                  echo "Current test coverage is below threshold. Please add more unit tests or adjust threshold to a lower value."
+                  echo "Failed"
+                  exit 1
+              fi
       - run: echo "🍏 This job's status is ${{ job.status }}."
