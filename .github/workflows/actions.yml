@@ -23,10 +23,9 @@ jobs:
       - name: Acceptance test cases
         run: TESTARGS="-run=TestAccNutanixVirtualMachine_hotadd" CGO_ENABLED=0 NUTANIX_USERNAME="admin" NUTANIX_PASSWORD="Nutanix.123" NUTANIX_INSECURE=true NUTANIX_PORT=9440 NUTANIX_ENDPOINT="10.51.144.11" NUTANIX_PE_PASSWORD="Nutanix.123" NUTANIX_PE_USERNAME="admin" NUTANIX_STORAGE_CONTAINER="f42ba7af-fe12-4555-80b2-70df794b4707" make testacc
       - name: Code Coverage Check
-        env:
-              TESTCOV_THRESHOLD = 0
         run:  |
               echo "Code coverage: Checking if code coverage is above threshold..."
+              TESTCOV_THRESHOLD = 0
               echo "Threshold: $TESTCOV_THRESHOLD %"
               totalCoverage=`go tool cover -func=coverage.out | grep total | grep -Eo '[0-9]+\.[0-9]+'`
               echo "Current test coverage : $totalCoverage %"
