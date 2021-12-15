@@ -60,7 +60,7 @@ resource "nutanix_role" "test" {
 	description = "%[2]s"
 	permission_reference_list {
 		kind = "permission"
-		uuid = "d752be00-2c24-4227-a6c9-13c5b41afc65"
+		uuid = "9da69fbf-95e8-497b-92ef-05be71b1644c"
 	}
 }
 
@@ -77,7 +77,7 @@ resource "nutanix_role" "test" {
 	description = "%[2]s"
 	permission_reference_list {
 		kind = "permission"
-		uuid = "d752be00-2c24-4227-a6c9-13c5b41afc65"
+		uuid = "9da69fbf-95e8-497b-92ef-05be71b1644c"
 	}
 }
 

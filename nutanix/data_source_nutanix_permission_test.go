@@ -9,7 +9,7 @@ import (
 
 const (
 	PERMISSIONNAME = "Delete_ACP"
-	PERMISSINOUUID = "e6eae070-76e4-40ab-9ed9-53753ffd2739"
+	PERMISSINOUUID = "3f9eedbe-4816-43b5-977a-29b70e424761"
 )
 
 func TestAccNutanixPermissionDataSource_basic(t *testing.T) {
