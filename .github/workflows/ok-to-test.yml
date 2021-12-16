@@ -1,7 +1,7 @@
 name: Ok To Test
 
 on:
-  discussion_comment:
+  issue_comment:
     types: [created]
 
 jobs:
