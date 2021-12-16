@@ -1,5 +1,5 @@
 name: Acceptance Test cases
-on: [push]
+on: []
 jobs:
   Explore-GitHub-Actions:
     runs-on: self-hosted
