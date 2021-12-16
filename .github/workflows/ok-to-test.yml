@@ -1,8 +1,10 @@
 name: Ok-To-Test
 
 on:
+  pull_request:
+    types: [opened]
   issue_comment:
-    types: [created]
+    types: [created]]
 
 jobs:
   oktotest:
