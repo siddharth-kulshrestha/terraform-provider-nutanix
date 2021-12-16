@@ -25,7 +25,7 @@ jobs:
         with:
           # token: ${{ env.TOKEN }} # GitHub App installation access token
           token: ${{ secrets.PAT }} # PAT or OAuth token will also work
-          # reaction-token: ${{ secrets.GITHUB_TOKEN }}
+          reaction-token: ${{ secrets.GITHUB_TOKEN }}
           issue-type: pull-request
           commands: ok-to-test
           # named-args: true
