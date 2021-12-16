@@ -1,6 +1,6 @@
-name: Ok-To-Test
+name: 'Ok-To-Test'
 
-on: issue_comment
+on: [issue_comment]
 
 jobs:
   oktotest:
