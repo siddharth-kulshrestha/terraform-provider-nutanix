@@ -1,7 +1,7 @@
 name: Ok To Test
 
 on:
-  pull_request_review_comment:
+  discussion_comment:
     types: [created]
 
 jobs:
