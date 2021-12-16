@@ -3,7 +3,7 @@ name: 'Ok-To-Test'
 on: [issue_comment]
 
 jobs:
-  oktotest:
+  test:
     runs-on: ubuntu-latest
     # if: ${{ github.event.issue.pull_request }}
     steps:
