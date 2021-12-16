@@ -1,0 +1,64 @@
+name: Ok To Test
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  ok-to-test:
+    runs-on: self-hosted
+    if: ${{ github.event.issue.pull_request }}
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}. And Github Token is ${{ secrets.GITHUB_TOKEN }}"
+
+      # - name: Generate token
+      #   id: generate_token
+      #   uses: tibdex/github-app-token@v1
+      #   with:
+      #     app_id: ${{ secrets.APP_ID }}
+      #     private_key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Slash Command Dispatch
+        uses: peter-evans/slash-command-dispatch@v1
+        # env:
+        #   TOKEN: ${{ steps.generate_token.outputs.token }}
+        with:
+          # token: ${{ env.TOKEN }} # GitHub App installation access token
+          token: ${{ secrets.PAT }} # PAT or OAuth token will also work
+          reaction-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-type: pull-request
+          commands: ok-to-test
+          named-args: true
+          permission: write
+      # - name: Check out repository code
+      #   uses: actions/checkout@v2
+      # - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      # - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      # - name: List files in the repository
+      #   run: |
+      #     ls ${{ github.workspace }}
+      # - name: Checkout
+      #   uses: actions/checkout@v2
+      # - name: Set up Go
+      #   uses: actions/setup-go@v2
+      #   with:
+      #     go-version: 1.17
+      # - name: Acceptance test cases
+      #   run: CGO_ENABLED=0 NUTANIX_USERNAME="admin" NUTANIX_PASSWORD="Nutanix.123" NUTANIX_INSECURE=true NUTANIX_PORT=9440 NUTANIX_ENDPOINT="10.51.144.11" NUTANIX_PE_PASSWORD="Nutanix.123" NUTANIX_PE_USERNAME="admin" NUTANIX_STORAGE_CONTAINER="f42ba7af-fe12-4555-80b2-70df794b4707" make testacc
+      # - name: Code Coverage Check
+      #   run:  |
+      #         echo "Code coverage: Checking if code coverage is above threshold..."
+      #         export TESTCOV_THRESHOLD=50
+      #         echo "Threshold: $TESTCOV_THRESHOLD %"
+      #         totalCoverage=`go tool cover -func=c.out | grep total | grep -Eo '[0-9]+\.[0-9]+'`
+      #         echo "Current test coverage : $totalCoverage %"
+      #         if (( $(echo "$totalCoverage $TESTCOV_THRESHOLD" | awk '{print ($1 > $2)}') )); then
+      #             echo "Coverage passed"
+      #         else
+      #             echo "Current test coverage is below threshold. Please add more unit tests or adjust threshold to a lower value."
+      #             echo "Coverage check failed"
+      #             exit 1
+      #         fi
+      - run: echo "🍏 This job's status is ${{ job.status }}."
