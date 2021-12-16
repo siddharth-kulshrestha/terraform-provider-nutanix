@@ -5,9 +5,9 @@ on:
     types: [created]
 
 jobs:
-  ok-to-test:
+  oktotest:
     runs-on: self-hosted
-    if: ${{ github.event.issue.pull_request }}
+    # if: ${{ github.event.issue.pull_request }}
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
