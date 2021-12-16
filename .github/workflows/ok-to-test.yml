@@ -1,9 +1,8 @@
-name: Ok To Test
+name: Ok-To-Test
 
 on:
   issue_comment:
-    types: 
-      - created
+    types: [created]
 
 jobs:
   ok-to-test:
@@ -31,7 +30,7 @@ jobs:
           # reaction-token: ${{ secrets.GITHUB_TOKEN }}
           issue-type: pull-request
           commands: ok-to-test
-          named-args: true
+          # named-args: true
           permission: write
       # - name: Check out repository code
       #   uses: actions/checkout@v2
