@@ -1,11 +1,16 @@
-name: 'Automated Tests'
+name: 'Dummy workflow'
 
-on: [push, pull_request]
+on:
+  repository_dispatch:
+    types: [ok-to-test-command]
 
 jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
+      - name: Dummy
+        run: echo "DUMMY!!!!!"
+
       - name: Checkout
         uses: actions/checkout@v2
       - name: Set up Go

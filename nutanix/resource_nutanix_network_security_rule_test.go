@@ -394,7 +394,7 @@ func testAccNutanixNetworkSecurityRuleConfigAdRule(r int) string {
 		ad_rule_target_group_filter_params {
 		  name = "ADGroup"
 		  values = [
-			"flow"
+			"sspadmins"
 		  ]
 		}
 		ad_rule_target_group_filter_type             = "CATEGORIES_MATCH_ALL"
@@ -429,7 +429,7 @@ func testAccNutanixNetworkSecurityRuleConfigAdRuleUpdate(r int) string {
 		ad_rule_target_group_filter_params {
 		  name = "ADGroup"
 		  values = [
-			"flow"
+			"sspadmins"
 		  ]
 		}
 		ad_rule_target_group_filter_type             = "CATEGORIES_MATCH_ALL"

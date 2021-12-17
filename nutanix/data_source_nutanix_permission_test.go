@@ -8,8 +8,8 @@ import (
 )
 
 const (
-	PERMISSIONNAME = "Access_Console_Virtual_Machine"
-	PERMISSINOUUID = "16b81a55-2bca-48c6-9fab-4f82c6bb4284"
+	PERMISSIONNAME = "Delete_ACP"
+	PERMISSINOUUID = "3f9eedbe-4816-43b5-977a-29b70e424761"
 )
 
 func TestAccNutanixPermissionDataSource_basic(t *testing.T) {
@@ -23,9 +23,9 @@ func TestAccNutanixPermissionDataSource_basic(t *testing.T) {
 					resource.TestCheckResourceAttr(
 						"data.nutanix_permission.test", "name", PERMISSIONNAME),
 					resource.TestCheckResourceAttr(
-						"data.nutanix_permission.test", "operation", "console_access"),
+						"data.nutanix_permission.test", "operation", "delete"),
 					resource.TestCheckResourceAttr(
-						"data.nutanix_permission.test", "fields.0.field_mode", "DISALLOWED"),
+						"data.nutanix_permission.test", "fields.0.field_mode", "NONE"),
 				),
 			},
 		},
@@ -51,9 +51,9 @@ func TestAccNutanixPermissionDataSource_basicByName(t *testing.T) {
 					resource.TestCheckResourceAttr(
 						"data.nutanix_permission.test", "name", PERMISSIONNAME),
 					resource.TestCheckResourceAttr(
-						"data.nutanix_permission.test", "operation", "console_access"),
+						"data.nutanix_permission.test", "operation", "delete"),
 					resource.TestCheckResourceAttr(
-						"data.nutanix_permission.test", "fields.0.field_mode", "DISALLOWED"),
+						"data.nutanix_permission.test", "fields.0.field_mode", "NONE"),
 				),
 			},
 		},
