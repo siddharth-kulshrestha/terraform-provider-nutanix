@@ -31,11 +31,7 @@ type TestConfig struct {
 	} `json:"ad_rule_target"`
 }
 
-var testCfg TestConfig
-
-func testVars() TestConfig {
-	return testCfg
-}
+var testVars TestConfig
 
 func TestMain(m *testing.M) {
 	log.Println("Do some crazy stuff before tests!")
@@ -47,13 +43,13 @@ func TestMain(m *testing.M) {
 		os.Exit(1)
 	}
 
-	err = json.Unmarshal(configData, &testCfg)
+	err = json.Unmarshal(configData, &testVars)
 	if err != nil {
 		log.Printf("Got this error while unmarshalling config.json: %s", err.Error())
 		os.Exit(1)
 	}
 
-	log.Println(testCfg)
+	log.Println(testVars)
 
 	os.Exit(m.Run())
 }
