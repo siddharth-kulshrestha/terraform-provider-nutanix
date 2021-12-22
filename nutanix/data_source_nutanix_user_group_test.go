@@ -8,9 +8,9 @@ import (
 )
 
 func TestAccNutanixUserGroupDataSource_basic(t *testing.T) {
-	distinguishedName := "cn=sspadmins,cn=users,dc=qa,dc=nucalm,dc=io"
-	displayName := "sspadmins"
-	uuid := "a8df1950-f144-4716-bc7f-274aeffa8449"
+	distinguishedName := testVars.UserGroupWithDistinguishedName.DistinguishedName
+	displayName := testVars.UserGroupWithDistinguishedName.DisplayName
+	uuid := testVars.UserGroupWithDistinguishedName.UUID
 
 	resource.Test(t, resource.TestCase{
 		PreCheck:  func() { testAccPreCheck(t) },
@@ -38,9 +38,9 @@ data "nutanix_user_group" "test" {
 `, uuid)
 }
 func TestAccNutanixUserGroupDataSource_ByName(t *testing.T) {
-	distinguishedName := "cn=sspadmins,cn=users,dc=qa,dc=nucalm,dc=io"
-	displayName := "sspadmins"
-	uuid := "a8df1950-f144-4716-bc7f-274aeffa8449"
+	distinguishedName := testVars.UserGroupWithDistinguishedName.DistinguishedName
+	displayName := testVars.UserGroupWithDistinguishedName.DisplayName
+	uuid := testVars.UserGroupWithDistinguishedName.UUID
 
 	resource.Test(t, resource.TestCase{
 		PreCheck:  func() { testAccPreCheck(t) },
@@ -71,9 +71,9 @@ data "nutanix_user_group" "test" {
 }
 
 func TestAccNutanixUserGroupDataSource_ByDistinguishedName(t *testing.T) {
-	distinguishedName := "cn=sspadmins,cn=users,dc=qa,dc=nucalm,dc=io"
-	displayName := "sspadmins"
-	uuid := "a8df1950-f144-4716-bc7f-274aeffa8449"
+	distinguishedName := testVars.UserGroupWithDistinguishedName.DistinguishedName
+	displayName := testVars.UserGroupWithDistinguishedName.DisplayName
+	uuid := testVars.UserGroupWithDistinguishedName.UUID
 
 	resource.Test(t, resource.TestCase{
 		PreCheck:  func() { testAccPreCheck(t) },

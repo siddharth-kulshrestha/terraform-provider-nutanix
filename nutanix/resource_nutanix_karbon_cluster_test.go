@@ -15,8 +15,8 @@ func TestAccNutanixKarbonCluster_basic(t *testing.T) {
 	t.Skip()
 	r := acctest.RandInt()
 	resourceName := "nutanix_karbon_cluster.cluster"
-	subnetName := "vlan.154"
-	defaultContainter := "default-container-75702903530678"
+	subnetName := testVars.SubnetName
+	defaultContainter := testVars.DefaultContainerName
 	resource.Test(t, resource.TestCase{
 		PreCheck:     func() { testAccPreCheck(t) },
 		Providers:    testAccProviders,
@@ -60,8 +60,8 @@ func TestAccNutanixKarbonCluster_scaleDown(t *testing.T) {
 	r := acctest.RandInt()
 	t.Skip()
 	resourceName := "nutanix_karbon_cluster.cluster"
-	subnetName := "vlan.154"
-	defaultContainter := "default-container-75702903530678"
+	subnetName := testVars.SubnetName
+	defaultContainter := testVars.DefaultContainerName
 	resource.Test(t, resource.TestCase{
 		PreCheck:     func() { testAccPreCheck(t) },
 		Providers:    testAccProviders,
@@ -105,8 +105,8 @@ func TestAccNutanixKarbonCluster_updateCNI(t *testing.T) {
 	r := acctest.RandInt()
 	t.Skip()
 	resourceName := "nutanix_karbon_cluster.cluster"
-	subnetName := "vlan.154"
-	defaultContainter := "default-container-75702903530678"
+	subnetName := testVars.SubnetName
+	defaultContainter := testVars.DefaultContainerName
 	resource.Test(t, resource.TestCase{
 		PreCheck:     func() { testAccPreCheck(t) },
 		Providers:    testAccProviders,

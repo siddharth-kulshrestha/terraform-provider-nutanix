@@ -7,21 +7,16 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/resource"
 )
 
-const (
-	PERMISSIONNAME = "Delete_ACP"
-	PERMISSINOUUID = "3f9eedbe-4816-43b5-977a-29b70e424761"
-)
-
 func TestAccNutanixPermissionDataSource_basic(t *testing.T) {
 	resource.Test(t, resource.TestCase{
 		PreCheck:  func() { testAccPreCheck(t) },
 		Providers: testAccProviders,
 		Steps: []resource.TestStep{
 			{
-				Config: testAccPermissionDataSourceConfig(PERMISSINOUUID),
+				Config: testAccPermissionDataSourceConfig(testVars.Permissions[1].UUID),
 				Check: resource.ComposeTestCheckFunc(
 					resource.TestCheckResourceAttr(
-						"data.nutanix_permission.test", "name", PERMISSIONNAME),
+						"data.nutanix_permission.test", "name", testVars.Permissions[1].Name),
 					resource.TestCheckResourceAttr(
 						"data.nutanix_permission.test", "operation", "delete"),
 					resource.TestCheckResourceAttr(
@@ -46,10 +41,10 @@ func TestAccNutanixPermissionDataSource_basicByName(t *testing.T) {
 		Providers: testAccProviders,
 		Steps: []resource.TestStep{
 			{
-				Config: testAccPermissionDataSourceConfigByName(PERMISSIONNAME),
+				Config: testAccPermissionDataSourceConfigByName(testVars.Permissions[1].Name),
 				Check: resource.ComposeTestCheckFunc(
 					resource.TestCheckResourceAttr(
-						"data.nutanix_permission.test", "name", PERMISSIONNAME),
+						"data.nutanix_permission.test", "name", testVars.Permissions[1].Name),
 					resource.TestCheckResourceAttr(
 						"data.nutanix_permission.test", "operation", "delete"),
 					resource.TestCheckResourceAttr(
