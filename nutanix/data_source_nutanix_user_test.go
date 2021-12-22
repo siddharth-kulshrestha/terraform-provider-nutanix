@@ -8,9 +8,9 @@ import (
 )
 
 func TestAccNutanixUserDataSource_basic(t *testing.T) {
-	principalName := "user3@qa.nucalm.io"
-	expectedDisplayName := "user3"
-	directoryServiceUUID := "3d227657-118d-4819-b4c0-432d54fd0687"
+	principalName := testVars.Users[1].PrincipalName
+	expectedDisplayName := testVars.Users[1].ExpectedDisplayName
+	directoryServiceUUID := testVars.Users[1].DirectoryServiceUUID
 
 	resource.Test(t, resource.TestCase{
 		PreCheck:     func() { testAccPreCheck(t) },
@@ -47,9 +47,9 @@ data "nutanix_user" "user" {
 }
 
 func TestAccNutanixUserDataSource_byName(t *testing.T) {
-	principalName := "user4@qa.nucalm.io"
-	expectedDisplayName := "user4"
-	directoryServiceUUID := "3d227657-118d-4819-b4c0-432d54fd0687"
+	principalName := testVars.Users[0].PrincipalName
+	expectedDisplayName := testVars.Users[0].ExpectedDisplayName
+	directoryServiceUUID := testVars.Users[0].DirectoryServiceUUID
 
 	resource.Test(t, resource.TestCase{
 		PreCheck:     func() { testAccPreCheck(t) },
