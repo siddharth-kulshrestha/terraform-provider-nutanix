@@ -17,14 +17,22 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: 1.17
-      - name: Acceptance test cases
-        run: CGO_ENABLED=0 NUTANIX_USERNAME="admin" NUTANIX_PASSWORD="Nutanix.123" NUTANIX_INSECURE=true NUTANIX_PORT=9440 NUTANIX_ENDPOINT="10.51.144.11" NUTANIX_PE_PASSWORD="Nutanix.123" NUTANIX_PE_USERNAME="admin" NUTANIX_STORAGE_CONTAINER="80766075-f2aa-4aee-a526-63d4a047d2ab" make testacc
-      - name: Code Coverage Check
-        run:  |
-              echo "Code coverage: Checking if code coverage is above threshold..."
-              export TESTCOV_THRESHOLD=50
-              echo "Threshold: $TESTCOV_THRESHOLD %"
-              totalCoverage=`go tool cover -func=c.out | grep total | grep -Eo '[0-9]+\.[0-9]+'`
-              echo `git branch | grep "\*"`
-              exit 1
+      - name: Check Git branch
+        run: echo `git branch | grep "\*"`
+      # - name: Acceptance test cases
+      #   run: CGO_ENABLED=0 NUTANIX_USERNAME="admin" NUTANIX_PASSWORD="Nutanix.123" NUTANIX_INSECURE=true NUTANIX_PORT=9440 NUTANIX_ENDPOINT="10.51.144.11" NUTANIX_PE_PASSWORD="Nutanix.123" NUTANIX_PE_USERNAME="admin" NUTANIX_STORAGE_CONTAINER="80766075-f2aa-4aee-a526-63d4a047d2ab" make testacc
+      # - name: Code Coverage Check
+      #   run:  |
+      #         echo "Code coverage: Checking if code coverage is above threshold..."
+      #         export TESTCOV_THRESHOLD=50
+      #         echo "Threshold: $TESTCOV_THRESHOLD %"
+      #         totalCoverage=`go tool cover -func=c.out | grep total | grep -Eo '[0-9]+\.[0-9]+'`
+      #         echo "Current test coverage : $totalCoverage %"
+      #         if (( $(echo "$totalCoverage $TESTCOV_THRESHOLD" | awk '{print ($1 > $2)}') )); then
+      #             echo "Coverage passed"
+      #         else
+      #             echo "Current test coverage is below threshold. Please add more unit tests or adjust threshold to a lower value."
+      #             echo "Coverage check failed"
+      #             exit 1
+      #         fi
       - run: echo "🍏 This job's status is ${{ job.status }}."
