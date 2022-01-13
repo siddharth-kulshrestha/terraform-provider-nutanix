@@ -6,6 +6,7 @@ on:
 jobs:
   Acceptance-Tests:
     runs-on: self-hosted
+    if: github.event_name == 'repository_dispatch'
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
