@@ -1,6 +1,6 @@
 # Terraform Nutanix Provider
 
-Terraform provider plugin to integrate with Nutanix Enterprise Cloud
+Terraform provider plugin to integrate with Nutanix Enterprise Cloud.
 
 NOTE: The latest version of the Nutanix provider is [v1.2.2](https://github.com/nutanix/terraform-provider-nutanix/releases/tag/v1.2.2)
 
@@ -240,4 +240,4 @@ We've got a handful of resources outside of this repository that will help users
 * Slack channel \* User community slack channel is available on nutanix.slack.com. Email terraform@nutanix.com to gain entry.
 
     
-DUMMY MASTER
+  DUMMY dummy_change_branch
