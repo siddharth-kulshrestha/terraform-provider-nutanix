@@ -1,5 +1,6 @@
 name: Acceptance Test cases
 on:
+  pull_request:
   repository_dispatch:
     types: [ok-to-test-command]
 jobs:
