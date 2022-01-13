@@ -34,7 +34,8 @@ jobs:
                   exit 1
               fi
       - run: echo "🍏 This job's status is ${{ job.status }}."
-          # Update check run called "integration-fork"
+
+      # Update check run called "integration-fork"
       - uses: actions/github-script@v5
         id: update-check-run
         if: ${{ always() }}
