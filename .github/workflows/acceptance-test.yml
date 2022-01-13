@@ -35,7 +35,7 @@ jobs:
       #             exit 1
       #         fi
       - run: echo "Success!"
-      - run: echo ::set-output name=code_coverage::"50"
+      - run: echo ::set-env name=totalCoverage::"50"
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
       # Update the comment back
@@ -45,7 +45,7 @@ jobs:
           comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
           body: |
             >Acceptance test run status: ${{ job.status }}
-            >Code Coverage: ${{ steps.vars.outputs.code_coverage }}
+            >Code Coverage: $totalCoverage
           reaction-type: hooray
 
       # Update check run called "integration-fork"
