@@ -37,6 +37,15 @@ jobs:
       - run: echo "Success!"
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
+      # Update the comment back
+      - name: Update comment
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
+          body: |
+            >Acceptance test run status: ${{ job.status }}
+          reaction-type: hooray
+
       # Update check run called "integration-fork"
       - uses: actions/github-script@v5
         id: update-check-run
