@@ -238,3 +238,6 @@ We've got a handful of resources outside of this repository that will help users
   _ [](https://github.com/JonKohler/ThisOldCloud/tree/master/Terraform-Nutanix)
   _ Contains sample TF’s and PDFs from the youtube videos
 * Slack channel \* User community slack channel is available on nutanix.slack.com. Email terraform@nutanix.com to gain entry.
+
+    
+DUMMY MASTER
