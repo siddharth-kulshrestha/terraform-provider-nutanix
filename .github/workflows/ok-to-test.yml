@@ -3,7 +3,7 @@ name: 'Ok-To-Test'
 on: [issue_comment]
 
 jobs:
-  test:
+  Trigger-Dispatch-Event:
     runs-on: ubuntu-latest
     if: ${{ github.event.issue.pull_request }}
     steps:

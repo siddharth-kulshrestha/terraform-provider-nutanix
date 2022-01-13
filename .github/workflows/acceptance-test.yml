@@ -3,7 +3,7 @@ on:
   repository_dispatch:
     types: [ok-to-test-command]
 jobs:
-  Acceptance Tests:
+  Acceptance-Tests:
     runs-on: self-hosted
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
