@@ -3,7 +3,7 @@ on:
   repository_dispatch:
     types: [ok-to-test-command]
 jobs:
-  Explore-GitHub-Actions:
+  Acceptance Tests:
     runs-on: self-hosted
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -27,12 +27,4 @@ jobs:
               totalCoverage=`go tool cover -func=c.out | grep total | grep -Eo '[0-9]+\.[0-9]+'`
               echo `git branch | grep "\*"`
               exit 1
-              echo "Current test coverage : $totalCoverage %"
-              if (( $(echo "$totalCoverage $TESTCOV_THRESHOLD" | awk '{print ($1 > $2)}') )); then
-                  echo "Coverage passed"
-              else
-                  echo "Current test coverage is below threshold. Please add more unit tests or adjust threshold to a lower value."
-                  echo "Coverage check failed"
-                  exit 1
-              fi
       - run: echo "🍏 This job's status is ${{ job.status }}."
