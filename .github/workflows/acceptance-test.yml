@@ -36,6 +36,7 @@ jobs:
       #             exit 1
       #         fi
       - run: echo "Success!"
+      - run: exit 1
       - run: echo "CODE_COVERAGE_OUTPUT=Line code coverage is 50" >> $GITHUB_ENV
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
