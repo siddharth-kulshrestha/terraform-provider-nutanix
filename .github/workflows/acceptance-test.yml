@@ -36,7 +36,7 @@ jobs:
       #             exit 1
       #         fi
       - run: echo "Success!"
-      - run: echo "CODE_COVERAGE=50" >> $GITHUB_ENV
+      - run: echo "CODE_COVERAGE_OUTPUT=\"Code coverage is 50\"" >> $GITHUB_ENV
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
       # Update the comment back
@@ -47,10 +47,10 @@ jobs:
           comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
           body: |
             >Acceptance test run status: ${{ job.status }}
-            >Code Coverage: ${{ env.CODE_COVERAGE }}
+            >${{ env.CODE_COVERAGE_OUTPUT }}
           reaction-type: hooray
 
-      # Update check run called "integration-fork"
+      # Update check run for Acceptance Test
       - uses: actions/github-script@v5
         id: update-check-run
         if: ${{ always() }}
